@@ -74,3 +74,71 @@ son_obj=son("bike","Car","house")
 son_obj.display_property2()
 son_obj.display_property3()
 son_obj.display_property1()
+
+
+
+'''task'''
+
+# Parent class
+class BankAccount:
+    def __init__(self, account_holder, balance):
+        self.account_holder = account_holder
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        print("Amount deposited:", amount)
+
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+            print("Amount withdrawn:", amount)
+        else:
+            print("Insufficient balance")
+
+    def display_balance(self):
+        print("Current balance:", self.balance)
+
+
+# Child class 1 - SavingsAccount
+class SavingsAccount(BankAccount):
+    def __init__(self, account_holder, balance, interest_rate):
+        super().__init__(account_holder, balance)
+        self.interest_rate = interest_rate
+
+    def add_interest(self):
+        interest = self.balance * self.interest_rate / 100
+        self.balance += interest
+        print("Interest added:", interest)
+
+
+# Child class 2 - CurrentAccount
+class CurrentAccount(BankAccount):
+    def __init__(self, account_holder, balance, overdraft_limit):
+        super().__init__(account_holder, balance)
+        self.overdraft_limit = overdraft_limit
+
+    def withdraw_with_overdraft(self, amount):
+        if amount <= self.balance + self.overdraft_limit:
+            self.balance -= amount
+            print("Amount withdrawn using overdraft:", amount)
+        else:
+            print("Overdraft limit exceeded")
+
+
+# Creating objects and testing methods
+
+# Savings Account object
+savings = SavingsAccount("Uday", 10000, 5)
+savings.deposit(2000)
+savings.add_interest()
+savings.withdraw(3000)
+savings.display_balance()
+
+print()
+
+# Current Account object
+current = CurrentAccount("Rahul", 5000, 3000)
+current.deposit(1000)
+current.withdraw_with_overdraft(7000)
+current.display_balance()
