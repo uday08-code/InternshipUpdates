@@ -167,5 +167,3 @@ class Counter:
 
 for i in Counter(1, 5):
     print(i)
-
-#Task 11: __getitem__ and __setitem__
