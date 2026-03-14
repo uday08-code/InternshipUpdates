@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Courses - Learnbytech{% endblock %}
+
+{% block content %}
+
+<h1>Course List</h1>
+
+<p>
+    <a href="{{ url_for('course_create') }}">Create a New Course</a>
+</p>
+
+{% if courses %}
+
+<table border="1" cellpadding="8">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Teacher ID</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for course in courses %}
+        <tr>
+
+            <td>{{ course.id }}</td>
+
+            <td>
+                <a href="{{ url_for('course_detail', id=course.id) }}">
+                    {{ course.title }}
+                </a>
+            </td>
+
+            <td>{{ course.description }}</td>
+
+            <td>{{ course.teacher_id }}</td>
+
+            <td>{{ course.status }}</td>
+
+            <td>
+                <a href="{{ url_for('course_edit', id=course.id) }}">Edit</a>
+
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% else %}
+<p>No courses found.</p>
+{% endif %}
+
+{% endblock %}

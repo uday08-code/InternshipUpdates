@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Edit Course - LearnByTech{% endblock %}
+
+{% block content %}
+<h1>Edit Course</h1>
+
+<form method="POST" action="{{ url_for('course_edit', id=course.id) }}">
+
+    <p>
+        <label>Title</label><br>
+        <input type="text" name="title" value="{{ course.title }}" required>
+    </p>
+
+    <p>
+        <label>Description</label><br>
+        <textarea name="description" rows="4" required>{{ course.description }}</textarea>
+    </p>
+
+    <p>
+        <label>Teacher</label><br>
+        <select name="teacher_id" required>
+
+            {% for teacher in teachers %}
+            <option value="{{ teacher.id }}" {% if teacher.id==course.teacher_id %}selected{% endif %}>
+                {{ teacher.name }}
+            </option>
+            {% endfor %}
+
+        </select>
+    </p>
+
+    <p>
+        <button type="submit">Update</button>
+    </p>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Access denied - LearnByTech{% endblock %}
+{% block content %}
+<h1>Access denied</h1>
+<p>you do not have permission to view this page </p>
+<p>
+    <a href="{{url_for('home')}}">Go to home</a>
+</p>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}register - LearnByTech{% endblock %}
+{% block content %}
+<h1>Register new user</h1>
+
+<form method="post" action="{{url_for('register')}}">
+    <p>
+        <label>Username:</label><br>
+        <input type="text" name="username" required>
+    </p>
+
+    <p>
+        <label>Email:</label><br>
+        <input type="email" name="email" required>
+    </p>
+
+    <p>
+        <label>Password:</label><br>
+        <input type="password" name="password" required>
+    </p>
+
+    <p>
+        <label>Role:</label><br>
+        <select name="role" required>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+        </select>
+    </p>
+    <button type="submit">Register</button>
+</form>
+{% endblock %}

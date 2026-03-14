@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Add Course - LearnByTech{% endblock %}
+
+{% block content %}
+<h1>Add Course</h1>
+
+<form method="post" action="{{ url_for('course_create') }}">
+
+    <p>
+        <label>Title:</label><br>
+        <input type="text" name="title" required>
+    </p>
+
+    <p>
+        <label>Description:</label><br>
+        <input type="text" name="description" required>
+    </p>
+
+    <p>
+        <label>Teacher:</label><br>
+        <select name="teacher_id">
+
+            {% for teacher in teachers %}
+            <option value="{{ teacher.id }}">{{ teacher.username }}</option>
+            {% endfor %}
+
+        </select>
+    </p>
+
+    <button type="submit">Create Course</button>
+
+</form>
+
+{% endblock %}

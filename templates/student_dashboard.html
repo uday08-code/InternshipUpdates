@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Student Dashboard - LearnByTech{% endblock %}
+{% block content %}
+<h1>Student Dashboard</h1>
+<p>Wellcome {% if session.get('username') %},{{session.usernaame}} {% endif%}</p>
+<p>
+    <a href="{{url_for('list_courses')}}">Browse_courses</a>
+</p>
+{% endblock %}
